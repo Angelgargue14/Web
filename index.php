@@ -91,7 +91,7 @@ include 'php/Monitor.php';
         <section>
             <div id="Monitor">
             <article class="carritoLista">
-              <h2>Montado de chorizo</h2>
+              <h2>Montado de chorizo y jamon to junto</h2>
               <h2>8€</h2>
               <p><span>2</span>4€ / unidad</p>
             </article>
