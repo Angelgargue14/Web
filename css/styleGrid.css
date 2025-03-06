@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+} 
+html, body { 
+    height: 100%; 
+    width: 100%;
+}
+body{   
+    display: grid;
+    grid-template-columns: 25% repeat(2, 1fr); /* Crea 3 columnas*/
+    grid-template-rows: 80% 20%; 
+    background-color: rgb(148, 147, 145);     
+}
+
+
+header{
+	grid-column: span 1; /* Ocupa las columnas 1 y 2 */
+    grid-row: span 2; /* Ocupa las filas 1 y 2 */
+    display: grid;
+    grid-template-columns: 1fr; /* Define una columnas*/
+    grid-template-rows: 8% 52% 40%; /* Define tres filas,*/     
+}
+main{
+    grid-column: 2 / span 2; /* Ocupa las columnas 2 y 3 */
+    grid-row: 1; /* Ocupa la fila 2 */
+    display: grid;
+    grid-template-columns: 90% 1fr; /* Define dos columnas*/
+    grid-template-rows: 10% 1fr; /* Define dos filas,*/
+}
+footer{
+	grid-column: 2 / span 2; /* Ocupa las columnas 2 y 3 */
+    grid-row: 2; /* Ocupa la fila 2 */ 
+}
+
+header nav{
+    grid-column: 1; /* Ocupa la columna 1 */
+    grid-row: 1; /* Ocupa la fila 2 */
+    overflow-y: scroll; /* Barra de desplazamiento solo vertical */
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */   
+}
+
+header section{
+    grid-column: 1; /* Ocupa la columna 1 */
+    grid-row: 2; /* Ocupa la fila 2 */
+    overflow-y: scroll; /* Barra de desplazamiento solo vertical */
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+}
+
+header aside{
+    grid-column: 1; /* Ocupa la columna 1 */
+    grid-row: 3; /* Ocupa la fila 3 */
+    overflow-y: scroll; /* Barra de desplazamiento solo vertical */
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+}
+
+main nav {
+    grid-column: 1 /span 2; /* Ocupa las columnas 1, 2 y 3 */
+    grid-row: 1; /* Ocupa la fila 1 */
+    overflow-y: scroll; /* Barra de desplazamiento solo vertical */
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+}
+
+main section {
+    grid-column: 1; /* Ocupa la columna 2 */
+    grid-row: 2; /* Ocupa la fila 2 */
+    overflow-y: scroll; /* Barra de desplazamiento solo vertical */
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+}
+
+main aside {
+    grid-column: 2; /* Ocupa la columna 3 */
+    grid-row: 2; /* Ocupa la fila 2 */ 
+    overflow-y: scroll; /* Barra de desplazamiento solo vertical */
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+}
+
+

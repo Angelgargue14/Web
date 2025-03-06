@@ -1,0 +1,19 @@
+#Monitor{
+    position: relative;
+    border-radius: 10px;        
+    width: 95%;
+    height: 95%;    
+    background-color: rgb(233, 233, 237); 
+    top: 50%; /* Posiciona el div a la mitad de la altura */
+    left:50%; /* Posiciona el div a la mitad del ancho */
+    transform: translate(-50%, -50%); /* Ajusta la posición para centrarlo */
+} 
+
+#Monitor ul{
+    list-style-type: none; /* Elimina los marcadores predeterminados */
+}
+
+#Monitor ul li span{
+    color:green;
+    font-size: medium;
+}
