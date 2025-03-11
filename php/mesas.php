@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn_mesa"])) {
     // Verificar que $_SESSION['mesa'] esté definida  
     if (isset($_SESSION["mesa"])) {
       // Consulta para contar las líneas del carrito si las tuviera
-      $q_cuentaLineas="SELECT COUNT(C.LINEA) AS total FROM MESAS M, CARRITOS C WHERE M.MESA=C.MESA AND C.MESA='".htmlspecialchars($_SESSION['mesa'])."'";
+      $q_cuentaLineas="SELECT COUNT(C.MESA) AS total FROM $dbname.MESAS M, $dbname.CARRITOS C WHERE M.MESA=C.MESA AND C.MESA='".htmlspecialchars($_SESSION['mesa'])."'";
       $cuentaLineas=mysqli_query($conn, $q_cuentaLineas);
       if ($cuentaLineas) {
           $row = mysqli_fetch_assoc($cuentaLineas);
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn_mesa"])) {
 
           // Si la mesa anterior no tiene líneas liberamos la mesa
           if ($cuentaLineas == 0) {
-              $up_falseOcupada = "UPDATE MESAS SET OCUPADA=FALSE WHERE MESA='".htmlspecialchars($_SESSION['mesa']). " '";
+              $up_falseOcupada = "UPDATE $dbname.MESAS SET OCUPADA=FALSE WHERE MESA='".htmlspecialchars($_SESSION['mesa']). " '";
               if (!mysqli_query($conn, $up_falseOcupada)) {
                   echo "Error al actualizar la mesa: ".mysqli_error($conn);
               }
@@ -56,10 +56,10 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["mesa"])) {
   // Guardar la nueva mesa seleccionada en la sesión
   $_SESSION['mesa'] = mysqli_real_escape_string($conn, $_POST['mesa']);
   if (isset($_SESSION["mesa"])) {
-    $up_trueOcupada = "UPDATE MESAS SET OCUPADA=TRUE WHERE MESA='".htmlspecialchars($_SESSION['mesa'])." '";
+    $up_trueOcupada = "UPDATE $dbname.MESAS SET OCUPADA=TRUE WHERE MESA='".htmlspecialchars($_SESSION['mesa'])." '";
     if (!mysqli_query($conn, $up_trueOcupada)) {
       echo "Error al actualizar la mesa: ".mysqli_error($conn);
-    }   
+    } 
   }
   $mesaBloqueo = false; // Salimos de la ventana de selección de mesa
 }

@@ -19,7 +19,7 @@ header{
     grid-row: span 2; /* Ocupa las filas 1 y 2 */
     display: grid;
     grid-template-columns: 1fr; /* Define una columnas*/
-    grid-template-rows: 8% 52% 40%; /* Define tres filas,*/     
+    grid-template-rows: 8% 52% 40%; /* Define tres filas,*/  
 }
 main{
     grid-column: 2 / span 2; /* Ocupa las columnas 2 y 3 */
@@ -52,6 +52,7 @@ header aside{
     grid-row: 3; /* Ocupa la fila 3 */
     overflow-y: scroll; /* Barra de desplazamiento solo vertical */
     overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+    background-color: aqua;
 }
 
 main nav {

@@ -1,19 +1,60 @@
-#Monitor{
+/*#Monitor{
     position: relative;
-    border-radius: 10px;        
+    border-radius: 10px 10px 0px 0px;        
     width: 95%;
-    height: 95%;    
+    height: 98%;    
     background-color: rgb(233, 233, 237); 
-    top: 50%; /* Posiciona el div a la mitad de la altura */
-    left:50%; /* Posiciona el div a la mitad del ancho */
-    transform: translate(-50%, -50%); /* Ajusta la posición para centrarlo */
-} 
+    top: 50%;  Posiciona el div a la mitad de la altura 
+    left:50%; Posiciona el div a la mitad del ancho 
+    transform: translate(-50%, -50%);  Ajusta la posición para centrarlo 
+    overflow-y: scroll; /* Barra de desplazamiento solo vertical 
+} */
 
-#Monitor ul{
-    list-style-type: none; /* Elimina los marcadores predeterminados */
+#Monitor{
+  width: 95%;
+  height: 97%;
+  margin-left: 2.5%;
+  margin-top: 2.5%;
+  background-color: rgb(233, 233, 237); 
+  border-radius: 10px 10px 0px 0px;  
+  overflow-y: scroll;
 }
 
-#Monitor ul li span{
-    color:green;
-    font-size: medium;
+form#vcarrito{
+    width: 95%;
+    height: 100%;
+    background-color: transparent;
+}
+
+form#vcarrito button{
+    width: 105%;
+    min-height: 12%;
+    border-radius: 0px 10px 10px 0px; /* Esquinas redondeadas */  
+    background-color: transparent;
+    margin-bottom: 2px;
+    border:none;
+    border-left: 5px solid rgb(72, 71, 69);
+}
+
+form#vcarrito button:hover{
+    background-color: rgba(156, 50, 50,0.5);
+}
+
+form#vcarrito button:active{
+    background-color: rgba(156, 50, 50,0.7);
+}
+
+button#vcarrito span#nombre{
+  margin-left: 10px;
+  float:left;
+}
+
+button#vcarrito span#cantidad{
+  margin-left: 10px;
+  float:left;
+}
+
+button#vcarrito span#precio{
+  width: 15%;
+  float: right;
 }

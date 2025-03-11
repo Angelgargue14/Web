@@ -36,10 +36,11 @@ include 'php/Monitor.php';
             <button type="button" class="button" onclick="addDigit(6)">6</button>
             <button type="button" class="button" onclick="addDigit(7)">7</button>
             <button type="button" class="button" onclick="addDigit(8)">8</button>
-            <button type="button" class="button" onclick="addDigit(9)">9</button>
-            <button type="button" class="button" id="desaparece"></button>
+            <button type="button" class="button" onclick="addDigit(9)">9</button>     
+            <button type="button" class="button" id="desaparece">&nbsp;</button>
             <button type="button" class="button" onclick="addDigit(0)">0</button>
-            <button type="button" class="button" id="desaparece"></button>
+            <button type="button" class="button" id="desaparece">&nbsp;</button>
+          
             <button type="button" id="borrar" onclick="clearPassword()">Borrar</button>
             <button type="submit" name="button" id="loguear">Acceder</button>
           </form>
@@ -65,7 +66,7 @@ include 'php/Monitor.php';
                   //(MESA, NOMBRE, MAX_COMENSALES, MIN_COMENSALES, OCUPADA, UBICACION, TIPO_MESA, NOTAS)
                   while($mesa = $mesas->fetch_assoc()) {
                         echo '<button type="submit" name="mesa" class="mesa" value="'.htmlspecialchars($mesa["MESA"]).'" style="background-color: '.(htmlspecialchars($mesa["OCUPADA"]) ? 'rgb(198, 239, 199)' : 'white').';">
-                        <span><b>'.htmlspecialchars($mesa["MESA"]).'</b ><br>
+                        <span><b>'.htmlspecialchars($mesa["MESA"]).'</b><br>
                         <span>  '.htmlspecialchars($mesa["NOMBRE"]).'<br>
                         Entre '.htmlspecialchars($mesa["MIN_COMENSALES"]).' y '.htmlspecialchars($mesa["MAX_COMENSALES"]).' comensales<br> 
                         Mesa '.htmlspecialchars($mesa["TIPO_MESA"]).'<br> 
@@ -85,18 +86,32 @@ include 'php/Monitor.php';
               <button type="submit" name="logout"><?php echo $_SESSION['usuario']; ?></button>
             </form>
             <form method="POST" id="desmesar">
-              <button type="submit  " name="btn_mesa"><?php echo $_SESSION['mesa']; ?></button>
+              <button type="submit" name="btn_mesa"><?php echo $_SESSION['mesa']; ?></button>
             </form>
         </nav>
         <section>
             <div id="Monitor">
-            <article class="carritoLista">
-              <h2>Montado de chorizo y jamon</h2>
-              <h2>8€</h2>
-              <p><span>2</span>4€ / unidad</p>
-            </article>
+              <form id="vcarrito" name="vcarrito" method="POST">
+              <?php
+              //consultamos el contenido de la mesa seleccionada
+              $q_vcarrito="SELECT * FROM VCARRITO WHERE MESA='".htmlspecialchars($_SESSION['mesa'])."';";
+              $vcarritos=mysqli_query($conn, $q_vcarrito);
+              if ($vcarritos->num_rows > 0) {
+                while($vcarrito = $vcarritos->fetch_assoc()) {
+                  echo '<button type="submit" name="vcarrito" id="vcarrito" value="'.htmlspecialchars($vcarrito["ID_ARTICULO"]).'">
+                        <span>
+                        <span id="nombre"><b>'.htmlspecialchars($vcarrito["NOMBRE"]).'</b></span><br>
+                        <span id="cantidad">'.htmlspecialchars($vcarrito["CANTIDAD"]).' x '.htmlspecialchars($vcarrito["PRECIO"]).'€  / Unidades </span>
+                        <span id="precio"><b>'.htmlspecialchars($vcarrito["TOTAL"]).'€</b></span>
+                        </span>
+                        </button>   
+                  ';
+                }
+              }
+              ?>
+              </form>
             </div>
-        </section>  
+        </section> 
         <aside>
             aside
         </aside>
@@ -123,8 +138,8 @@ include 'php/Monitor.php';
                if ($articulos->num_rows > 0) {
                  // Salida de cada fila
                  while($articulo = $articulos->fetch_assoc()) {
-                   echo '<button type="submit" name="articulo" class="articulo" value="'.htmlspecialchars($articulo["NOMBRE"]).'" style="background-image: url(\'img/productos/Coca-cola.png\');">    
-                         <span>'.htmlspecialchars($articulo["NOMBRE"]).'<br> ('.htmlspecialchars($articulo["PRECIO"]).' €)</span>    
+                   echo '<button type="submit" name="articulo" class="articulo" value="'.htmlspecialchars($articulo["ARTICULO"]).'" style="background-image: url(\'img/productos/Coca-cola.png\');">    
+                         <span>'.htmlspecialchars($articulo["ARTICULO"]).'<br> ('.htmlspecialchars($articulo["PRECIO"]).' €)</span>    
                          </button>';    
                  }
                } else {
@@ -161,7 +176,7 @@ include 'php/Monitor.php';
           echo 'UBICACION ='.htmlspecialchars($_SESSION['ubicacion']).' -  POST= '.htmlspecialchars($_POST['ubicacion']).'<br>';
           echo 'MESA ='.htmlspecialchars($_SESSION['mesa']).' -  POST= '.htmlspecialchars($_POST['mesa']).'<br>';
           echo '$up_falseOcupada ='.$up_falseOcupada.'<br>  '; 
-          echo  '$q_cuentaLineas= '.$q_cuentaLineas;  
+          echo  '$q_cuentaLineas= '.$q_cuentaLineas.'<br>';
         ?>  
     </footer>
     <?php

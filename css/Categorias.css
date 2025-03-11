@@ -27,8 +27,8 @@ input{
 .articulo {
     display: inline-block;        /* Permitir que el botón ajuste su tamaño */
 	position: relative	;
-    width: 200px;                /* Ancho fijo o ajustable según sea necesario */
-    height: 200px;                
+    width: 170px;                /* Ancho fijo o ajustable según sea necesario */
+    height: 170px;                
     padding: 10px;               /* Espaciado interno */
 	margin-bottom: 2px;          /* Espaciado externo*/
 	margin-top: 3px;          /* Espaciado externo*/
