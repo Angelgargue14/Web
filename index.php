@@ -104,8 +104,7 @@ include 'php/Monitor.php';
                         <span id="cantidad">'.htmlspecialchars($vcarrito["CANTIDAD"]).' x '.htmlspecialchars($vcarrito["PRECIO"]).'€  / Unidades </span>
                         <span id="precio"><b>'.htmlspecialchars($vcarrito["TOTAL"]).'€</b></span>
                         </span>
-                        </button>   
-                  ';
+                        </button>';
                 }
               }
               ?>
@@ -176,7 +175,7 @@ include 'php/Monitor.php';
           echo 'UBICACION ='.htmlspecialchars($_SESSION['ubicacion']).' -  POST= '.htmlspecialchars($_POST['ubicacion']).'<br>';
           echo 'MESA ='.htmlspecialchars($_SESSION['mesa']).' -  POST= '.htmlspecialchars($_POST['mesa']).'<br>';
           echo '$up_falseOcupada ='.$up_falseOcupada.'<br>  '; 
-          echo  '$q_cuentaLineas= '.$q_cuentaLineas.'<br>';
+          echo 'vcarrito ='.htmlspecialchars($_SESSION['vcarrito']).' vcarrito= '.$_POST['vcarrito'].'<br>';
         ?>  
     </footer>
     <?php

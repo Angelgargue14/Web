@@ -52,7 +52,6 @@ header aside{
     grid-row: 3; /* Ocupa la fila 3 */
     overflow-y: scroll; /* Barra de desplazamiento solo vertical */
     overflow-x: hidden; /* Oculta el desplazamiento horizontal */
-    background-color: aqua;
 }
 
 main nav {

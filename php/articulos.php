@@ -69,6 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['articulo']) && $_POST[
     mysqli_query($conn, $in_artiEnCarri);
   }
 } else if (!isset($_SESSION['articulo']) || $_SESSION['articulo'] == '') {
-  $_SESSION['articulo']=''; // Valor por defecto --ASIGNAR VARIABLE EN CONFIG
+  $_SESSION['articulo']=''; //valor por defecto
 }
 ?>
