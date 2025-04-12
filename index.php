@@ -94,7 +94,7 @@ include 'php/Monitor.php';
               <form id="vcarrito" name="vcarrito" method="POST">
               <?php
               //consultamos el contenido de la mesa seleccionada
-              $q_vcarrito="SELECT * FROM VCARRITO WHERE MESA='".htmlspecialchars($_SESSION['mesa'])."';";
+              $q_vcarrito="SELECT * FROM VCARRITO WHERE MESA='".htmlspecialchars($_SESSION['mesa'])."' ORDER BY INSERCION";
               $vcarritos=mysqli_query($conn, $q_vcarrito);
               if ($vcarritos->num_rows > 0) {
                 while($vcarrito = $vcarritos->fetch_assoc()) {
@@ -112,7 +112,26 @@ include 'php/Monitor.php';
             </div>
         </section> 
         <aside>
-            aside
+            <div id="totales"> 
+              <span><?php
+              //Consultamos el total de los productos dentro del carrito
+              $q_total_vcarrito="SELECT SUM(TOTAL) AS TOTAL, COUNT(*) AS PRODUCTOS FROM VCARRITO WHERE MESA='".htmlspecialchars($_SESSION['mesa'])."'";
+              $total_vcarritos=mysqli_query($conn, $q_total_vcarrito);
+              if($total_vcarritos->num_rows > 0) {
+                while ($total_vcarrito = $total_vcarritos->fetch_assoc()) {
+                  if ($total_vcarrito["TOTAL"] > 0){
+                    echo '<span id="productos">Productos</span><span id="cantidad">'.$total_vcarrito["PRODUCTOS"].'</span><br>';
+                    echo '<span id="titulo"><b>TOTAL</b></span><span id="precio"><b>'.$total_vcarrito["TOTAL"].' €</b></span><br>';
+                  } else{
+                    echo '<span id="titulo"><b>TOTAL</b></span><span id="precio"><b>0€</b></span>';
+                  }
+                }
+              }
+              ?></span>
+            </div>
+            <div id="botonera">
+              <span>botonera</span>
+            </div>
         </aside>
     </header>
     <main> 

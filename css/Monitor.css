@@ -58,3 +58,39 @@ button#vcarrito span#precio{
   width: 15%;
   float: right;
 }
+
+div#totales{
+  background-color: rgb(233, 233, 237); 
+  width: 95%;
+  margin-left: 2.5%;
+  border-radius: 0px 0px 10px 10px; 
+  height: 12.5%; 
+}
+
+div#totales span#titulo{
+  font-size: large;
+  font-style: initial;
+  float: left;
+  margin-left: 5%;
+}
+
+div#totales span#precio{
+  font-size: large;
+  font-style: initial;
+  float: right;
+  margin-right: 5%;
+}
+
+div#totales span#productos{
+  font-size: smaller;
+  font-style: initial;
+  float: left;
+  margin-left: 5%;
+}
+
+div#totales span#cantidad{
+  font-size: smaller;
+  font-style: initial;
+  float: right;
+  margin-right: 5%;
+}

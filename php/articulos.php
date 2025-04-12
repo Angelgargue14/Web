@@ -35,12 +35,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['subcategoria']) && $_P
 
 //Consultar los articulos
 if ($_SESSION['subcategoria'] != ''){
-  $q_articulos = "SELECT * FROM VARTICULOS WHERE SUBCATEGORIA='".mysqli_real_escape_string($conn, $_SESSION['subcategoria'])."' ORDER BY ARTICULO";
+  $q_articulos = "SELECT * FROM VARTICULOS WHERE SUBCATEGORIA='".mysqli_real_escape_string($conn, $_SESSION['subcategoria'])."' AND DISPONIBILIDAD=1 ORDER BY ARTICULO";
   $articulos= mysqli_query($conn, $q_articulos);
 }else{
-  $q_articulos = "SELECT * FROM VARTICULOS WHERE CATEGORIA='".mysqli_real_escape_string($conn,$_SESSION['categoria'])."' ORDER BY ARTICULO";
+  $q_articulos = "SELECT * FROM VARTICULOS WHERE CATEGORIA='".mysqli_real_escape_string($conn,$_SESSION['categoria'])."' AND DISPONIBILIDAD=1 ORDER BY ARTICULO";
   $articulos=mysqli_query($conn, $q_articulos);   
 }
+
 //consultar el artículo seleccionado
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['articulo']) && $_POST['articulo'] != '') {
       $_SESSION['articulo'] = $_POST['articulo']; // Guardar en sesión
@@ -62,10 +63,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['articulo']) && $_POST[
   }else{
     //si el articulo no está aún en la mesa
     //Insertamos el nuevo artículo en la mesa
-    $in_artiEnCarri="INSERT INTO $dbname.CARRITOS VALUES (".mysqli_real_escape_string($conn,$_SESSION['mesa']).",
-                                                         MD5('".mysqli_real_escape_string($conn,$_SESSION['articulo'])."'),
-                                                        ".mysqli_real_escape_string($conn,$_SESSION['cantidad']).",
-                                                        ".mysqli_real_escape_string($conn,$_SESSION['descuento']).")";
+    $in_artiEnCarri = "INSERT INTO $dbname.CARRITOS (MESA, ID_ARTICULO, CANTIDAD) VALUES (
+                                                    '".mysqli_real_escape_string($conn, $_SESSION['mesa'])."',
+                                                    MD5('".mysqli_real_escape_string($conn, $_SESSION['articulo'])."'),
+                                                    ".mysqli_real_escape_string($conn, $_SESSION['cantidad']).")";
     mysqli_query($conn, $in_artiEnCarri);
   }
 } else if (!isset($_SESSION['articulo']) || $_SESSION['articulo'] == '') {
