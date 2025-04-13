@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="css/Mesas.css">
     <link rel="stylesheet" href="css/Monitor.css">  
     <link rel="stylesheet" href="css/typicons.css">
-    <link rel="stylesheet" href="css/scrollbar.css">    
+    <link rel="stylesheet" href="css/scrollbar.css">  
+    <link rel="stylesheet" href="css/Botonera.css"> 
     <script src="sumain.js" defer></script> 
     <title>LottyShop</title>    
 </head>
@@ -115,7 +116,7 @@ include 'php/Monitor.php';
             <div id="totales"> 
               <span><?php
               //Consultamos el total de los productos dentro del carrito
-              $q_total_vcarrito="SELECT SUM(TOTAL) AS TOTAL, COUNT(*) AS PRODUCTOS FROM VCARRITO WHERE MESA='".htmlspecialchars($_SESSION['mesa'])."'";
+              $q_total_vcarrito="SELECT SUM(TOTAL) AS TOTAL, SUM(CANTIDAD) AS PRODUCTOS FROM VCARRITO WHERE MESA='".htmlspecialchars($_SESSION['mesa'])."'";
               $total_vcarritos=mysqli_query($conn, $q_total_vcarrito);
               if($total_vcarritos->num_rows > 0) {
                 while ($total_vcarrito = $total_vcarritos->fetch_assoc()) {
@@ -130,7 +131,29 @@ include 'php/Monitor.php';
               ?></span>
             </div>
             <div id="botonera">
-              <span>botonera</span>
+            <form id="botonera" name="botonera" method="POST">
+              <button class="cabecera"><span class="typcn typcn-user-add-outline"></span></br>Cliente</button>
+              <button class="cabecera"><span class="typcn typcn-clipboard"></span></br> Nota Producto</button>
+              <button class="cabecera"><span class="typcn typcn-cog-outline"></span></br>Funcines</button></br>
+              <button class="cuerpo">1</button>
+              <button class="cuerpo">2</button>
+              <button class="cuerpo">3</button>
+              <button class="cuerpo">ctd.</button></br>
+              <button class="cuerpo">4</button>
+              <button class="cuerpo">5</button>
+              <button class="cuerpo">6</button>
+              <button class="cuerpo">%</button></br>
+              <button class="cuerpo">7</button>
+              <button class="cuerpo">8</button>
+              <button class="cuerpo">9</button>
+              <button class="cuerpo">precio</button></br>
+              <button class="cuerpo">+/-</button>
+              <button class="cuerpo">0</button>
+              <button class="cuerpo">,</button>
+              <button class="cuerpo" id="deshacer"><span class="typcn typcn-backspace"></span></button></br>
+              <button class="pie"><span>Comandar</span></button>
+              <button class="pie" id="pagar"><span>Pago</span></button>
+            </form>
             </div>
         </aside>
     </header>
@@ -203,3 +226,4 @@ include 'php/Monitor.php';
     ?>
 </body>
 </html>
+
