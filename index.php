@@ -208,16 +208,29 @@ include 'php/Monitor.php';
          </aside>
     </main>
     <footer>
+        <div id="ingredientes">
+          <button>Extra</button>
+          <button>Sin</button>
+          <form id="ingredientes" name="ingredientes" method="POST">
+            <button>Tomate</button>
+            <button>Lechuga</button>
+            <button>Pan</button>
+            <button>cebolla</button>
+          </form>
+        </div>
+        <div id="informacion">
+          <p>información del programa hora y fecha</p>
+        </div>
         <?php
-          echo 'CATEGORIA='.htmlspecialchars($_SESSION['categoria']).'  -  POST= '.htmlspecialchars($_POST['categoria']).'<br>';
-          echo 'SUBCATEGORIA='.htmlspecialchars($_SESSION['subcategoria']).'  -  POST= '.htmlspecialchars($_POST['subcategoria']).'<br>';
-          echo 'ARTICULO='.htmlspecialchars($_SESSION['articulo']).'  -  POST= '.htmlspecialchars($_POST['articulo']).'<br>';
-          echo 'PASSWORD  ='.htmlspecialchars($_SESSION['password']).'  -  POST= '.htmlspecialchars($_POST['password']).'<br>';
-          echo 'USUARIO ='.htmlspecialchars($_SESSION['usuario']).'<br>';
-          echo 'UBICACION ='.htmlspecialchars($_SESSION['ubicacion']).' -  POST= '.htmlspecialchars($_POST['ubicacion']).'<br>';
-          echo 'MESA ='.htmlspecialchars($_SESSION['mesa']).' -  POST= '.htmlspecialchars($_POST['mesa']).'<br>';
-          echo '$up_falseOcupada ='.$up_falseOcupada.'<br>  '; 
-          echo 'vcarrito ='.htmlspecialchars($_SESSION['vcarrito']).' vcarrito= '.$_POST['vcarrito'].'<br>';
+        //  echo 'CATEGORIA='.htmlspecialchars($_SESSION['categoria']).'  -  POST= '.htmlspecialchars($_POST['categoria']).'<br>';
+        //  echo 'SUBCATEGORIA='.htmlspecialchars($_SESSION['subcategoria']).'  -  POST= '.htmlspecialchars($_POST['subcategoria']).'<br>';
+        //  echo 'ARTICULO='.htmlspecialchars($_SESSION['articulo']).'  -  POST= '.htmlspecialchars($_POST['articulo']).'<br>';
+        //  echo 'PASSWORD  ='.htmlspecialchars($_SESSION['password']).'  -  POST= '.htmlspecialchars($_POST['password']).'<br>';
+        //  echo 'USUARIO ='.htmlspecialchars($_SESSION['usuario']).'<br>';
+        //  echo 'UBICACION ='.htmlspecialchars($_SESSION['ubicacion']).' -  POST= '.htmlspecialchars($_POST['ubicacion']).'<br>';
+        //  echo 'MESA ='.htmlspecialchars($_SESSION['mesa']).' -  POST= '.htmlspecialchars($_POST['mesa']).'<br>';
+        //  echo '$up_falseOcupada ='.$up_falseOcupada.'<br>  '; 
+        //  echo 'vcarrito ='.htmlspecialchars($_SESSION['vcarrito']).' vcarrito= '.$_POST['vcarrito'].'<br>';
         ?>  
     </footer>
     <?php
