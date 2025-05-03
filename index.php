@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Fuente.css">
     <link rel="stylesheet" href="css/styleGrid.css">
     <link rel="stylesheet" href="css/Categorias.css">  
     <link rel="stylesheet" href="css/Headers.css">
@@ -11,18 +12,19 @@
     <link rel="stylesheet" href="css/typicons.css">
     <link rel="stylesheet" href="css/scrollbar.css">  
     <link rel="stylesheet" href="css/Botonera.css"> 
+    <link rel="stylesheet" href="css/Clientes.css"> 
     <script src="sumain.js" defer></script> 
     <title>LottyShop</title>    
 </head>
 <body>
 <?php
 session_start(); // Iniciar la sesión   
-
 include 'php/config.php';
 include 'php/articulos.php';
 include 'php/usuarios.php';
 include 'php/mesas.php';
 include 'php/Monitor.php';
+include 'php/botonera.php';
 ?> 
 
     <header>  
@@ -132,7 +134,12 @@ include 'php/Monitor.php';
             </div>
             <div id="botonera">
             <form id="botonera" name="botonera" method="POST">
-              <button class="cabecera"><span class="typcn typcn-user-add-outline"></span></br>Cliente</button>
+              <?php
+                if($_SESSION['cliente'] == ''){
+                  $_SESSION['cliente']='Cliente';
+                }
+              ?>
+              <button type="submit" name="selcliente" class="cabecera"><span class="typcn typcn-user-add-outline"></span></br><?php echo $_SESSION['cliente']; ?></button>
               <button class="cabecera"><span class="typcn typcn-clipboard"></span></br> Nota Producto</button>
               <button class="cabecera"><span class="typcn typcn-cog-outline"></span></br>Funcines</button></br>
               <button class="cuerpo">1</button>
@@ -155,6 +162,50 @@ include 'php/Monitor.php';
               <button class="pie" id="pagar"><span>Pago</span></button>
             </form>
             </div>
+            
+          <div id="bloqueoClientes" style="display: <?php echo $asignarClientes ? 'flex' : 'none'; ?>;">    
+            <form id="asignarClientes" name="asignarClientes" method="POST">
+                <div id="buscarDIV">
+                  <button id="buscarBUT"><span class="typcn typcn-zoom-outline"></span></button>
+                  <input type="text" id="buscarINP" name="buscarINP" placeholder="buscar..."/>
+                </div>
+                  <div id="listaClientes">
+                    <?php
+                      $buscar = isset($_POST['buscarINP']) ? htmlspecialchars($_POST['buscarINP']) : '';
+                      
+                      $q_buscaClientes = "SELECT * FROM CLIENTES 
+                                          WHERE 
+                                          NOMBRE LIKE '%$buscar%' OR
+                                          IDENTIDAD LIKE '%$buscar%' OR
+                                          CORREO LIKE '%$buscar%' OR
+                                          TELEFONO LIKE '%$buscar%' 
+                                          ORDER BY MODIFICACION DESC;";
+
+                      $buscaClientes=mysqli_query($conn, $q_buscaClientes);
+
+                      if($buscaClientes->num_rows > 0) {
+                        while ($buscaCliente = $buscaClientes->fetch_assoc()) {
+                      echo  '<div id="cliente">'
+                          .'<button name="cliente" id="cliente" value='.htmlspecialchars($buscaCliente["IDENTIDAD"]).'>'
+                          .'<div id="nombreCliente">'.htmlspecialchars($buscaCliente["NOMBRE"]).' '.htmlspecialchars($buscaCliente["APELLIDOS"]).'</div>'
+                          .'<div id="direccionCliente"><span class="typcn typcn-home"></span> '.htmlspecialchars($buscaCliente["DIRECCION"])
+                          .' '.htmlspecialchars($buscaCliente["CODIGO_POSTAL"])
+                          .' '.htmlspecialchars($buscaCliente["CIUDAD"])
+                          .' ('.htmlspecialchars($buscaCliente["PROVINCIA"]).')'
+                          .'</div>'
+                          .'<div id="datosCliente"><span class="typcn typcn-at"></span> '.htmlspecialchars($buscaCliente["CORREO"]).'</br>'
+                          .'<span class="typcn typcn-device-phone"></span> '.htmlspecialchars($buscaCliente["TELEFONO"]).'</div>'
+                          .' </button>'
+                          .'<button id="ajustesCliente"><span class="typcn typcn-edit"></span></button>'
+                          .'</div>';
+                        }
+                      }
+                    ?>
+                  </div>
+                  <button id="descartar">Descartar</button>
+                  <button id="añadir">Añadir</button>
+            </form> 
+          </div>
         </aside>
     </header>
     <main> 
@@ -222,6 +273,9 @@ include 'php/Monitor.php';
           <p>información del programa hora y fecha</p>
         </div>
         <?php
+        echo 'POST CLIENTE='.$_POST['cliente'].' SESION ='.$_SESSION['cliente'].'</br>';
+        echo 'BUSQUEDA ACTIVA: '.htmlspecialchars($_POST['buscarINP']).' '.'</br>';
+        echo 'asignar Clientes: '.$asignarClientes.' '.'</br>';
         //  echo 'CATEGORIA='.htmlspecialchars($_SESSION['categoria']).'  -  POST= '.htmlspecialchars($_POST['categoria']).'<br>';
         //  echo 'SUBCATEGORIA='.htmlspecialchars($_SESSION['subcategoria']).'  -  POST= '.htmlspecialchars($_POST['subcategoria']).'<br>';
         //  echo 'ARTICULO='.htmlspecialchars($_SESSION['articulo']).'  -  POST= '.htmlspecialchars($_POST['articulo']).'<br>';
