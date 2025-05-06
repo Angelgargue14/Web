@@ -40,19 +40,19 @@ div#botonera form#botonera button span{
 }
 
 div#botonera form#botonera button#deshacer{
-    background-color: rgb(156, 50, 50);
+    background-color: var(--RojoPrincipal);
 }
 
 div#botonera form#botonera button:active{
-    background-color: rgb(72, 71, 69);
+    background-color: var(--VerdeOliva);
 }
 
 div#botonera form#botonera button#deshacer:active{
     background-color: black;
-    color: rgb(156, 50, 50);
+    color: var(--RojoPrincipal);
 }
 
 div#botonera form#botonera button#pagar:active{
-    background-color: rgb(255,215,0);
+    background-color: var(--OroViejo);
 }
 

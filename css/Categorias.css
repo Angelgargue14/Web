@@ -11,7 +11,7 @@ input{
 	float: left;
 	margin-right: 2px;
 	border:none;
-	background-color: rgb(233, 233, 237);
+	background-color: var(--GrisCalido);
 	border-radius: 10px 10px 10px 10px; /* Esquinas redondeadas */
 }
 
@@ -20,7 +20,7 @@ input{
 	height: 100px;
 	margin-bottom: 2px;
 	border: none;
-	background-color: rgb(233, 233, 237);
+	background-color: var(--GrisCalido);
 	border-radius: 20px 20px 20px 20px; /* Esquinas redondeadas */
 }
 
@@ -43,11 +43,11 @@ input{
     background-repeat: no-repeat; /* Evita que la imagen se repita */
 	border:none;
 	border-radius: 20px 20px 20px 20px; /* Esquinas redondeadas */
-	background-color: rgb(233, 233, 237);
+	background-color: var(--GrisCalido);
 }
 
 .articulo:active{
-	background-color: rgb(156, 50, 50);
+	background-color: var(--RojoPrincipal);
 }
 
 .articulo span {

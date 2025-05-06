@@ -13,7 +13,7 @@
     float:left;
     width: 62%;
     height: 62%;
-    background-color:rgb(72, 71, 69);     
+    background-color:var(--VerdeOliva);     
     z-index: 1;
     top: 50%; /* Posiciona el div a la mitad de la altura */
     left:50%; /* Posiciona el div a la mitad del ancho */
@@ -64,7 +64,7 @@
 }
 
 #div_mesas #form_mesas button span:active{
-    background-color: rgb(156, 50, 50);
+    background-color: var(--RojoPrincipal);
 }
 
 #div_mesas #form_mesas button span span{

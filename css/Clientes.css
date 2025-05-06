@@ -15,7 +15,7 @@ div#bloqueoClientes form#asignarClientes{
     margin-left:15%;
     width: 70%;
     height: 80%;
-    background-color: rgb(72, 71, 69);
+    background-color: var(--VerdeOliva);
     border-radius: 10px 10px 10px 10px; /* Esquinas redondeadas */
     overflow: hidde n;
     border: 2px solid black; 
@@ -46,7 +46,7 @@ div#bloqueoClientes form#asignarClientes{
     height: 100%;
     border: none;
     background-color: white;
-    border-right: 0.5px solid rgb(72, 71, 69);
+    border-right: 0.5px solid var(--VerdeOliva);
 }
 
 #buscarBUT .typcn{
@@ -54,7 +54,7 @@ div#bloqueoClientes form#asignarClientes{
 }
 
 #buscarDIV #buscarBUT:hover{
-   background-color: rgb(190, 190, 190);
+   background-color: var(--GrisCalido);
 }
 
 #buscarDIV #buscarBUT:active{
@@ -109,11 +109,11 @@ button#cliente .typcn{
 }
 
 button#cliente:hover{
-  background-color: rgb(190, 190, 190);
+  background-color: var(--GrisCalido);
 }
 
 button#cliente:active{
-    background-color:  rgb(156, 50, 50);
+    background-color:  var(--RojoPrincipal);
   }
 
 button#cliente #nombreCliente{
@@ -148,11 +148,11 @@ button#ajustesCliente{
 }
 
 button#ajustesCliente:hover{
-    background-color: rgb(190, 190, 190);
+    background-color: var(--GrisCalido);
 }
 
 button#ajustesCliente:active{
-    background-color: rgb(156, 50, 50);
+    background-color: var(--RojoPrincipal);
 }
 
 button#descartar{
@@ -166,7 +166,7 @@ button#descartar{
 }
 
 button#descartar:hover{
-    background-color: rgb(190, 190, 190);
+    background-color: var(--GrisCalido);
 }
 
 button#descartar:active{
@@ -184,7 +184,7 @@ button#añadir{
 }
 
 button#añadir:hover{
-    background-color: rgb(190, 190, 190);
+    background-color: var(--GrisCalido);
 }
 
 button#añadir:active{

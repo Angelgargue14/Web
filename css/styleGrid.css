@@ -10,7 +10,7 @@ body{
     display: grid;
     grid-template-columns: 25% repeat(2, 1fr); /* Crea 3 columnas*/
     grid-template-rows: 80% 20%; 
-    background-color: rgb(148, 147, 145);     
+    background-color: var(--GrisFrio);     
 }
 
 

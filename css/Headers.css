@@ -16,7 +16,7 @@ header nav img{
 
 header nav form *{
     width: 100%;
-    background-color: rgb(233, 233, 237);
+    background-color: var(--GrisCalido);
     border-radius: 10px 10px 10px 10px; /* Esquinas redondeadas */
 }
 
@@ -34,7 +34,7 @@ header nav form *{
     width: 235px;          
     height: 430px;    
     position: absolute;
-    background-color: rgb(233, 233, 237);         
+    background-color: var(--GrisCalido);         
     top: 50%; /* Posiciona el div a la mitad de la altura */
     left:50%; /* Posiciona el div a la mitad del ancho */
     transform: translate(-50%, -50%); /* Ajusta la posición para centrarlo */
