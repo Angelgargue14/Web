@@ -24,6 +24,12 @@ div#botonera form#botonera button{
 
 div#botonera form#botonera .cabecera{
     width: 32%;
+    display: inline-block;
+    max-width: 32%; /* Ajusta según el ancho deseado */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
 }
 
 div#botonera form#botonera .cuerpo{

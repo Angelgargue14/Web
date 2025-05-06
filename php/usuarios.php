@@ -2,13 +2,14 @@
 //consultar usuario
 if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['password']) && $_POST['password'] != ''){
   $_SESSION['password'] = $_POST['password'];
-  $q_usuarios="SELECT NOMBRE FROM $dbname.EMPLEADOS WHERE CONTRASEÑA=MD5('".mysqli_real_escape_string($conn, $_SESSION['password'])."')";
+  $q_usuarios="SELECT * FROM $dbname.EMPLEADOS WHERE CONTRASEÑA=MD5('".mysqli_real_escape_string($conn, $_SESSION['password'])."')";
   $usuario=mysqli_query($conn, $q_usuarios);
 
     if (mysqli_num_rows($usuario) > 0) {
       //Si hay un usuario logueado
       $row = mysqli_fetch_assoc($usuario);
       $_SESSION['usuario'] = $row['NOMBRE'];
+      $_SESSION['ID_EMPLEADO'] = $row['ID_EMPLEADO'];
       $usuarioLogueado=false;
       if (empty($_SESSION ['mesa'])) {
         $mesaBloqueo=true; //aparece la ventana de seleccion de mesa div_mesas y div_mesas_bloqueo

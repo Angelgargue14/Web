@@ -21,6 +21,7 @@
 <?php
 session_start(); // Iniciar la sesión   
 include 'php/config.php';
+include 'php/Funciones.php';
 include 'php/articulos.php';
 include 'php/usuarios.php';
 include 'php/mesas.php';
@@ -140,7 +141,7 @@ include 'php/botonera.php';
                   $_SESSION['cliente']='Cliente';
                 }
               ?>
-              <button type="submit" name="selcliente" class="cabecera"><span class="typcn typcn-user-add-outline"></span></br><?php echo $_SESSION['cliente']; ?></button>
+              <button type="submit" name="selcliente" class="cabecera"><span class="typcn typcn-user-add-outline"></span></br><?php voidClienteMesa(htmlspecialchars($_SESSION['mesa'])); ?></button>
               <button class="cabecera"><span class="typcn typcn-clipboard"></span></br> Nota Producto</button>
               <button class="cabecera"><span class="typcn typcn-cog-outline"></span></br>Funcines</button></br>
               <button class="cuerpo">1</button>
@@ -187,7 +188,7 @@ include 'php/botonera.php';
                       if($buscaClientes->num_rows > 0) {
                         while ($buscaCliente = $buscaClientes->fetch_assoc()) {
                       echo  '<div id="cliente">'
-                          .'<button name="cliente" id="cliente" value='.htmlspecialchars($buscaCliente["IDENTIDAD"]).'>'
+                          .'<button type="submit" name="cliente" id="cliente" value='.htmlspecialchars($buscaCliente["IDENTIDAD"]).'>'
                           .'<div id="nombreCliente">'.htmlspecialchars($buscaCliente["NOMBRE"]).' '.htmlspecialchars($buscaCliente["APELLIDOS"]).'</div>'
                           .'<div id="direccionCliente"><span class="typcn typcn-home"></span> '.htmlspecialchars($buscaCliente["DIRECCION"])
                           .' '.htmlspecialchars($buscaCliente["CODIGO_POSTAL"])
@@ -204,7 +205,8 @@ include 'php/botonera.php';
                     ?>
                   </div>
                   <button id="descartar">Descartar</button>
-                  <button id="añadir">Añadir</button>
+                  <button id="añadir">Liberar Mesa</button>
+                  <button id="añadir">Añadir Cliente</button>
             </form> 
           </div>
         </aside>
@@ -277,6 +279,7 @@ include 'php/botonera.php';
         echo 'POST CLIENTE='.$_POST['cliente'].' SESION ='.$_SESSION['cliente'].'</br>';
         echo 'BUSQUEDA ACTIVA: '.htmlspecialchars($_POST['buscarINP']).' '.'</br>';
         echo 'asignar Clientes: '.$asignarClientes.' '.'</br>';
+        echo 'id empleado:'.$_SESSION['ID_EMPLEADO'].'a ver que tal';
         //  echo 'CATEGORIA='.htmlspecialchars($_SESSION['categoria']).'  -  POST= '.htmlspecialchars($_POST['categoria']).'<br>';
         //  echo 'SUBCATEGORIA='.htmlspecialchars($_SESSION['subcategoria']).'  -  POST= '.htmlspecialchars($_POST['subcategoria']).'<br>';
         //  echo 'ARTICULO='.htmlspecialchars($_SESSION['articulo']).'  -  POST= '.htmlspecialchars($_POST['articulo']).'<br>';
