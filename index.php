@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Colores.css">
-    <link rel="stylesheet" href="css/Fuente.css">
-    <link rel="stylesheet" href="css/styleGrid.css">
-    <link rel="stylesheet" href="css/Categorias.css">  
-    <link rel="stylesheet" href="css/Headers.css">
-    <link rel="stylesheet" href="css/Mesas.css">
-    <link rel="stylesheet" href="css/Monitor.css">  
-    <link rel="stylesheet" href="css/typicons.css">
-    <link rel="stylesheet" href="css/scrollbar.css">  
-    <link rel="stylesheet" href="css/Botonera.css"> 
-    <link rel="stylesheet" href="css/Clientes.css"> 
-    <script src="sumain.js" defer></script> 
-    <title>LottyShop</title>    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/Colores.css">
+  <link rel="stylesheet" href="css/Fuente.css">
+  <link rel="stylesheet" href="css/styleGrid.css">
+  <link rel="stylesheet" href="css/Categorias.css">  
+  <link rel="stylesheet" href="css/Headers.css">
+  <link rel="stylesheet" href="css/Mesas.css">
+  <link rel="stylesheet" href="css/Monitor.css">  
+  <link rel="stylesheet" href="css/typicons.css">
+  <link rel="stylesheet" href="css/scrollbar.css">  
+  <link rel="stylesheet" href="css/Botonera.css"> 
+  <link rel="stylesheet" href="css/Clientes.css"> 
+  <script src="sumain.js" defer></script> 
+  <title>LottyShop</title>    
 </head>
 <body>
 <?php
@@ -198,68 +198,81 @@ include 'php/botonera.php';
                           .'<div id="datosCliente"><span class="typcn typcn-at"></span> '.htmlspecialchars($buscaCliente["CORREO"]).'</br>'
                           .'<span class="typcn typcn-device-phone"></span> '.htmlspecialchars($buscaCliente["TELEFONO"]).'</div>'
                           .' </button>'
-                          .'<button id="ajustesCliente"><span class="typcn typcn-edit"></span></button>'
+                          .'<button id="ajustesCliente" value='.htmlspecialchars($buscaCliente["IDENTIDAD"]).' name="btnAddCliente"><span class="typcn typcn-edit"></span></button>'
                           .'</div>';
                         }
                       }
                     ?>
                   </div>
                   <button id="descartar">Descartar</button>
-                  <button id="añadir">Liberar Mesa</button>
-                  <button id="añadir">Añadir Cliente</button>
+                  <button id="añadir" name="quitarCliente" type="submit">Quitar Cliente</button>
+                  <button id="añadir" name="btnAddCliente" type="submit">Añadir Cliente</button>
             </form> 
+          </div>
+
+          <div id="blqAddClientes" style="display: <?php echo $addClientes ? 'flex' : 'none'; ?>;">
+            <div id="divAddClientes">
+              <button id="particulares" type="submit" name="btnParticulares" >Particulares</button>
+              <button id="empresas" type="submit" name="btnEmpresas" >Empresas</button>
+              <form id="AddCliParticulares" name="AddClientes" method="POST" style="display: <?php echo $MonCliParticulares ? 'flex' : 'none'; ?>;">
+                <p>CLIENTES PARTICULARES</p>
+              </form>
+              <form id="AddCliEmpresas" name="AddClientes" method="POST" style="display: <?php echo $MonCliEmpresas ? 'flex' : 'none'; ?>;">
+                <p>CLIENTES EMPRESAS</p>
+              </form>
+              <button id="descartar">Descartar</button>
+            </div>
           </div>
         </aside>
     </header>
     <main> 
-         <nav>
-         <form method="POST" action="">
-         <?php
-           if ($categorias->num_rows > 0) {
-             // Salida de cada filaa
-             while($categoria = $categorias->fetch_assoc()) {
-               echo '<input type="submit" name="categoria" class="categoria" value='.htmlspecialchars($categoria["NOMBRE"]).'>';
-              }
-           }else {
-             echo "No hay categorías disponibles.";
+      <nav>
+        <form method="POST" action="">
+        <?php
+          if ($categorias->num_rows > 0) {
+            // Salida de cada filaa
+            while($categoria = $categorias->fetch_assoc()) {
+              echo '<input type="submit" name="categoria" class="categoria" value='.htmlspecialchars($categoria["NOMBRE"]).'>';
+            }
+          }else {
+            echo "No hay categorías disponibles.";
           }
           ?>
-         </form>
-         </nav>
-         <section>
-            <form method="POST" action="">
-             <?php
+        </form>
+        </nav>
+        <section>
+          <form method="POST" action="">
+            <?php
                // Mostrar los articulos del subartículo seleccionado
-               if ($articulos->num_rows > 0) {
-                 // Salida de cada fila
-                 while($articulo = $articulos->fetch_assoc()) {
-                   echo '<button type="submit" name="articulo" class="articulo" value="'.htmlspecialchars($articulo["ARTICULO"]).'" style="background-image: url(\'img/productos/Coca-cola.png\');">    
-                         <span>'.htmlspecialchars($articulo["ARTICULO"]).'<br> ('.htmlspecialchars($articulo["PRECIO"]).' €)</span>    
-                         </button>';    
-                 }
-               } else {
-                 echo "No hay Articulos disponibles.";
-               }
-             ?>
+              if ($articulos->num_rows > 0) {
+                // Salida de cada fila
+                while($articulo = $articulos->fetch_assoc()) {
+                  echo '<button type="submit" name="articulo" class="articulo" value="'.htmlspecialchars($articulo["ARTICULO"]).'" style="background-image: url(\'img/productos/Coca-cola.png\');">    
+                        <span>'.htmlspecialchars($articulo["ARTICULO"]).'<br> ('.htmlspecialchars($articulo["PRECIO"]).' €)</span>    
+                        </button>';    
+                }
+              } else {
+                echo "No hay Articulos disponibles.";
+              }
+            ?>
             </form>
-         </section>
-         <aside>
-            <form method="POST" action="">
-             <?php
-               // Mostrar la categoría seleccionada
-               //echo "Categoría seleccionada: " . htmlspecialchars($_SESSION['categoria']);
-               
-               if ($subcategorias && $subcategorias->num_rows > 0) {
-                 // Salida de cada fila
-                 while($subcategoria = $subcategorias->fetch_assoc()) {
-                   echo '<input type="submit" name="subcategoria" class="subcategoria" value="'.htmlspecialchars($subcategoria["NOMBRE"]).'">';
-                 }
-               } else {
-                 echo "No hay subcategorías disponibles.";
-               }
-             ?>
-            </form>
-         </aside>
+        </section>
+        <aside>
+          <form method="POST" action="">
+            <?php
+              // Mostrar la categoría seleccionada
+              //echo "Categoría seleccionada: " . htmlspecialchars($_SESSION['categoria']);
+              if ($subcategorias && $subcategorias->num_rows > 0) {
+                // Salida de cada fila
+                while($subcategoria = $subcategorias->fetch_assoc()) {
+                  echo '<input type="submit" name="subcategoria" class="subcategoria" value="'.htmlspecialchars($subcategoria["NOMBRE"]).'">';
+                }
+              } else {
+                echo "No hay subcategorías disponibles.";
+              }
+            ?>
+          </form>
+        </aside>
     </main>
     <footer>
         <div id="ingredientes">

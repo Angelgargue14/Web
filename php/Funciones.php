@@ -110,10 +110,10 @@ function updateClientePedido($cliente,$mesa){
     $u_Pedido="
     UPDATE $dbname.PEDIDOS 
     SET 
-      ID_CLIENTE = ? 
+        ID_CLIENTE = ? 
     WHERE 
-      MESA = ? AND 
-      ESTADO ='PENDIENTE';
+        MESA = ? AND 
+        ESTADO ='PENDIENTE';
     ";
 
     // Prepara la consulta
@@ -131,6 +131,46 @@ function updateClientePedido($cliente,$mesa){
     // Cierra la declaración
     $stmt->close();
 }
+
+/**
+ * Elimina la asociación de un cliente a un pedido pendiente de una mesa específica.
+ *
+ * Esta función actualiza la tabla de PEDIDOS estableciendo el campo ID_CLIENTE a NULL 
+ * para el pedido asociado a la mesa indicada.
+ *
+ * @param string $mesa Identificador de la mesa cuyo pedido debe desvincularse del cliente.
+ *
+ * @return void Solo muestra un mensaje si ocurre un error en la ejecución de la consulta SQL.
+ */
+function deleteClientePedido($mesa){
+    global $conn;
+    global $dbname;
+
+    //Prepara la consulta para evitar inyecciones SQL
+    $d_Cliente="
+    UPDATE $dbname.PEDIDOS 
+    SET 
+        ID_CLIENTE = NULL
+    WHERE 
+        MESA = ?;
+    ";
+
+    // Prepara la consulta
+    $stmt = $conn->prepare($d_Cliente);
+
+    // Víncula los parámetros
+    $stmt->bind_param("s", $mesa);
+
+    // Ejecuta la consulta
+    if (!$stmt->execute()) {
+        // Si ocurre un error, muestra el mensaje de error
+        echo "Error al actualizar el pedido: " . $stmt->error;
+    }
+
+    // Cierra la declaración
+    $stmt->close();
+}
+
 
 /**
  * Muestra el nombre del cliente asociado a una mesa con un pedido pendiente.
@@ -165,4 +205,66 @@ function voidClienteMesa($mesa) {
     $stmt->close();
 }
 
+
+/**
+ * Consulta datos geográficos de un código postal usando la API de CartoCiudad.
+ *
+ * Realiza una petición HTTP a la API oficial de CartoCiudad para obtener información
+ * del municipio o municipios asociados al código postal proporcionado.
+ *
+ * @param string $codigoPostal Código postal que se desea consultar (por ejemplo, "28001").
+ *
+ * @return array Devuelve un array con información de los municipios asociados al CP.
+ *               En caso de error, devuelve un array con clave 'error' y descripción.
+ *
+ * Ejemplo de respuesta:
+ * [
+ *     [
+ *         'municipio'  => 'Madrid',
+ *         'provincia'  => 'Madrid',
+ *         'ccaa'       => 'Comunidad de Madrid',
+ *         'cod_muni'   => '079',
+ *         'cod_prov'   => '28',
+ *         'cod_ccaa'   => '13'
+ *     ]
+ * ]
+ *
+ * Ejemplo de error:
+ * ['error' => 'No se encontraron datos para el código postal.']
+ */
+function obtenerDatosPorCP($codigoPostal) {
+    $url = "https://www.cartociudad.es/cartografia/api/consulta/codigopostal/" . urlencode($codigoPostal);
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $respuesta = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        return ['error' => curl_error($ch)];
+    }
+
+    curl_close($ch);
+
+    $datos = json_decode($respuesta, true);
+
+    if (!$datos || !isset($datos['municipios'])) {
+        return ['error' => 'No se encontraron datos para el código postal.'];
+    }
+
+    // Devolver datos importantes
+    $resultado = [];
+    foreach ($datos['municipios'] as $muni) {
+        $resultado[] = [
+            'municipio'  => $muni['nm'],
+            'provincia'  => $muni['np'],
+            'ccaa'       => $muni['nccaa'],
+            'cod_muni'   => $muni['cm'],
+            'cod_prov'   => $muni['cp'],
+            'cod_ccaa'   => $muni['ccaa']
+        ];
+    }
+
+    return $resultado;
+}
 ?>

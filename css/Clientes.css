@@ -190,3 +190,27 @@ button#añadir:hover{
 button#añadir:active{
     background-color: rgba(190, 190, 190,0.8);
 }
+
+/*PANTALLA AÑADIR CLIENTES*/
+div#blqAddClientes{
+    top: 0;
+    left: 0;
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(127, 127, 127, 0.3); 
+    z-index: 100;
+    display:flex;
+}
+
+div#blqAddClientes div#divAddClientes{
+    display: block;
+    margin-top: 2.5%;
+    margin-left:15%;
+    width: 70%;
+    height: 80%;
+    background-color: var(--VerdeOliva);
+    border-radius: 10px 10px 10px 10px; /* Esquinas redondeadas */
+    overflow: hidde n;
+    border: 2px solid black; 
+}

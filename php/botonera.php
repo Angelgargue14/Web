@@ -1,5 +1,4 @@
 <?php
-
 /*CLIENTES*/
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['selcliente'])) {
     $asignarClientes=true;
@@ -24,5 +23,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cliente'])) {
     }else{
         $_SESSION['cliente']="Cliente";
     }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['quitarCliente'])) {
+    if (isset($_POST['quitarCliente']) != ''){
+        deleteClientePedido($_SESSION['mesa']);
+    }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnAddCliente'])) {
+    $addClientes=true;
+    $MonCliParticulares=true;
+    $MonCliEmpresas=false;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnParticulares'])) {
+    $MonCliParticulares=true;
+    $MonCliEmpresas=false;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnEmpresas'])) {
+    $MonCliParticulares=false;
+    $MonCliEmpresas=true;
 }
 ?>
