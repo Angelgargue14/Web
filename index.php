@@ -210,17 +210,68 @@ include 'php/botonera.php';
             </form> 
           </div>
 
-          <div id="blqAddClientes" style="display: <?php echo $addClientes ? 'flex' : 'none'; ?>;">
-            <div id="divAddClientes">
-              <button id="particulares" type="submit" name="btnParticulares" >Particulares</button>
-              <button id="empresas" type="submit" name="btnEmpresas" >Empresas</button>
-              <form id="AddCliParticulares" name="AddClientes" method="POST" style="display: <?php echo $MonCliParticulares ? 'flex' : 'none'; ?>;">
-                <p>CLIENTES PARTICULARES</p>
+          <div id="blqAddClientes" style="display: <?php echo $_SESSION['addClientes'] ? 'flex' : 'none'; ?>;">
+            <div id="formAddClientes">
+
+              <!-- FORMULARIO 1: Botones de tipo de cliente -->
+              <form id="formbtnParEmpr" method="POST">
+                <button id="particulares" type="submit" name="btnParticulares"
+                  class="<?php echo (isset($_SESSION['botonActivo']) && $_SESSION['botonActivo'] === 'particulares') ? 'activo' : ''; ?>">
+                  Particulares
+                </button>
+
+                <button id="empresas" type="submit" name="btnEmpresas"
+                  class="<?php echo (isset($_SESSION['botonActivo']) && $_SESSION['botonActivo'] === 'empresas') ? 'activo' : ''; ?>">
+                  Empresas
+                </button>
               </form>
-              <form id="AddCliEmpresas" name="AddClientes" method="POST" style="display: <?php echo $MonCliEmpresas ? 'flex' : 'none'; ?>;">
-                <p>CLIENTES EMPRESAS</p>
+
+              <!-- FORMULARIO 2: Datos del cliente -->
+              <form id="formDatosCliente" method="POST">
+                <!-- CLIENTES PARTICULARES -->
+                <div class="clsAddCli" id="AddCliParticulares" style="display: <?php echo $MonCliParticulares ? 'flex' : 'none'; ?>;">
+                  <fieldset>
+                    <legend>Datos personales / empresa</legend>
+
+                    <label for="nombre">Nombre*</label>
+                    <input type="text" id="nombre" name="nombre" required>
+
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" id="apellidos" name="apellidos">
+
+                    <label for="tipo_documento">Tipo de documento*</label>
+                    <select id="tipo_documento" name="tipo_documento" required>
+                      <option value="">Seleccione</option>
+                      <option value="NIF">NIF (Persona)</option>
+                      <option value="CIF">CIF (Empresa)</option>
+                    </select>
+
+                    <label for="identidad">NIF/CIF*</label>
+                    <input type="text" id="identidad" name="identidad" maxlength="9" required>
+
+                    <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo">
+
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono">
+                  </fieldset>
+                </div>
+
+                <!-- CLIENTES EMPRESAS -->
+                <div class="clsAddCli" id="AddCliEmpresas" style="display: <?php echo $MonCliEmpresas ? 'flex' : 'none'; ?>;">
+                  <h3>Empresa</h3>
+                  <!-- Aquí añadirías campos específicos para empresas -->
+                </div>
               </form>
-              <button id="descartar">Descartar</button>
+
+              <!-- FORMULARIO 3: Botón Descartar -->
+              <form id="formDescartar" method="POST">
+                <button id="descartar" type="submit" name="btnCliDescartar">Descartar</button>
+              </form>
+
             </div>
           </div>
         </aside>
@@ -292,7 +343,9 @@ include 'php/botonera.php';
         echo 'POST CLIENTE='.$_POST['cliente'].' SESION ='.$_SESSION['cliente'].'</br>';
         echo 'BUSQUEDA ACTIVA: '.htmlspecialchars($_POST['buscarINP']).' '.'</br>';
         echo 'asignar Clientes: '.$asignarClientes.' '.'</br>';
-        echo 'id empleado:'.$_SESSION['ID_EMPLEADO'].'a ver que tal';
+        echo 'id empleado:'.$_SESSION['ID_EMPLEADO'].' a ver que tal</br>';
+        echo 'addClientes:'.$addClientes.'</br>';
+        echo 'sesion addClientes:'.$_SESSION['addClientes'];
         //  echo 'CATEGORIA='.htmlspecialchars($_SESSION['categoria']).'  -  POST= '.htmlspecialchars($_POST['categoria']).'<br>';
         //  echo 'SUBCATEGORIA='.htmlspecialchars($_SESSION['subcategoria']).'  -  POST= '.htmlspecialchars($_POST['subcategoria']).'<br>';
         //  echo 'ARTICULO='.htmlspecialchars($_SESSION['articulo']).'  -  POST= '.htmlspecialchars($_POST['articulo']).'<br>';

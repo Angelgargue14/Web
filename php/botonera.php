@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['quitarCliente'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnAddCliente'])) {
-    $addClientes=true;
+    $_SESSION['addClientes'] = true;
     $MonCliParticulares=true;
     $MonCliEmpresas=false;
 }
@@ -46,4 +46,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnEmpresas'])) {
     $MonCliParticulares=false;
     $MonCliEmpresas=true;
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnCliDescartar'])) {
+    $_SESSION['addClientes'] = false;
+}
+
+/*Cambiar de color el botón dependiendo de cual pulses*/
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (isset($_POST['btnParticulares'])) {
+        $_SESSION['botonActivo'] = 'particulares';
+    } elseif (isset($_POST['btnEmpresas'])) {
+        $_SESSION['botonActivo'] = 'empresas';
+    }
+}
+
+
 ?>

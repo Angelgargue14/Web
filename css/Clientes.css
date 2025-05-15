@@ -15,7 +15,7 @@ div#bloqueoClientes form#asignarClientes{
     margin-left:15%;
     width: 70%;
     height: 80%;
-    background-color: var(--VerdeOliva);
+    background-color: var(--RojoPrincipal);
     border-radius: 10px 10px 10px 10px; /* Esquinas redondeadas */
     overflow: hidde n;
     border: 2px solid black; 
@@ -46,7 +46,7 @@ div#bloqueoClientes form#asignarClientes{
     height: 100%;
     border: none;
     background-color: white;
-    border-right: 0.5px solid var(--VerdeOliva);
+    border-right: 0.5px solid var(--RojoPrincipal);
 }
 
 #buscarBUT .typcn{
@@ -203,14 +203,90 @@ div#blqAddClientes{
     display:flex;
 }
 
-div#blqAddClientes div#divAddClientes{
+div#blqAddClientes div#formAddClientes{
     display: block;
     margin-top: 2.5%;
     margin-left:15%;
     width: 70%;
     height: 80%;
-    background-color: var(--VerdeOliva);
+    background-color: var(--RojoPrincipal);
     border-radius: 10px 10px 10px 10px; /* Esquinas redondeadas */
-    overflow: hidde n;
+    /*overflow: hidden;*/
     border: 2px solid black; 
+}
+
+div#blqAddClientes div#formAddClientes form{
+    display: flex;
+    width: auto;
+    height: auto;
+}
+
+div#blqAddClientes div#formAddClientes form#formbtnParEmpr{
+    width: auto;
+    height: auto;
+}
+
+div#blqAddClientes div#formAddClientes form#formDatosCliente{
+    width: auto;
+    height: auto;
+}
+
+div#blqAddClientes div#formAddClientes form#formDescartar{
+    width: auto;
+    height: auto;
+}
+
+div#blqAddClientes #particulares{
+    float:left;
+    width: 49%;
+    height: 5%;
+    margin: 0.5% 0 0 1%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom: none;
+    background-color: white;
+}
+
+div#blqAddClientes #particulares:hover{
+    background-color: var(--GrisCalido);
+}
+
+div#blqAddClientes #particulares:active{
+    background-color: var(--GrisFrio);
+}
+
+
+div#blqAddClientes #empresas{
+    float:right;
+    width:49%;
+    height: 5%;
+    margin: 0.5% 1% 0 0;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    background-color: white;
+    border-bottom: none;
+}
+
+div#blqAddClientes #empresas:hover{
+    background-color: var(--GrisCalido);
+}
+
+div#blqAddClientes #empresas:active{
+    background-color: var(--GrisFrio);
+}
+
+div#blqAddClientes .clsAddCli{
+    width: 100%;
+    height: 86%;
+    background-color: white;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+}
+
+div#blqAddClientes #particulares.activo {
+  background-color: var(--OroViejo); /* o cualquier color que quieras */
+}
+
+div#blqAddClientes #empresas.activo {
+  background-color: var(--OroViejo); /* o cualquier color que quieras */
 }

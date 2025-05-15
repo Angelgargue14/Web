@@ -13,7 +13,7 @@
     float:left;
     width: 62%;
     height: 62%;
-    background-color:var(--VerdeOliva);     
+    background-color:var(--RojoPrincipal);     
     z-index: 1;
     top: 50%; /* Posiciona el div a la mitad de la altura */
     left:50%; /* Posiciona el div a la mitad del ancho */
@@ -47,7 +47,7 @@
 #div_mesas #form_mesas button{
     display: inline-flex;   
     position: relative;   
-    width: 200px;
+    width: 170px;
     height: 200px;
     background-color: white;
     margin: 5px;
