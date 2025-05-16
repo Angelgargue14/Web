@@ -1,0 +1,66 @@
+form{
+	height: 100%;
+	width: 100%;
+}
+input{
+	cursor: pointer; /* Cambiar cursor al pasar */
+}
+.categoria{
+	height: 100%;
+	width: 100px;
+	float: left;
+	margin-right: 2px;
+	border:none;
+	background-color: var(--GrisCalido);
+	border-radius: 10px 10px 10px 10px; /* Esquinas redondeadas */
+}
+
+.subcategoria{
+	width:100%;
+	height: 100px;
+	margin-bottom: 2px;
+	border: none;
+	background-color: var(--GrisCalido);
+	border-radius: 20px 20px 20px 20px; /* Esquinas redondeadas */
+}
+
+.articulo {
+    display: inline-block;        /* Permitir que el botón ajuste su tamaño */
+	position: relative	;
+    width: 170px;                /* Ancho fijo o ajustable según sea necesario */
+    height: 170px;                
+    padding: 10px;               /* Espaciado interno */
+	margin-bottom: 2px;          /* Espaciado externo*/
+	margin-top: 3px;          /* Espaciado externo*/
+	margin-right: 5px;       /* Espaciado externo*/			
+    font-size: 16px;             /* Tamaño de fuente */
+    text-align: center;          /* Centrar el texto */
+    word-wrap: break-word;       /* Permitir que las palabras se dividan */
+    overflow-wrap: break-word;   /* Soporte adicional para la división de palabras */
+    white-space: normal;         /* Permitir que el texto se divida en varias líneas */
+	background-size: cover; /* La imagen cubrirá todo el botón */
+    background-position: center; /* Centra la imagen dentro del botón */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+	border:none;
+	border-radius: 20px 20px 20px 20px; /* Esquinas redondeadas */
+	background-color: var(--GrisCalido);
+}
+
+.articulo:active{
+	background-color: var(--RojoPrincipal);
+}
+
+.articulo span {
+	position: absolute; /* Posiciona los <span> de forma absoluta dentro del botón */
+	left: 0; /* Alinea los <span> al borde izquierdo */
+	right: 0; /* Alinea los <span> al borde derecho */
+	bottom: 0; /* Alinea los <span> al borde inferior del botón */
+	background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente para el texto */
+	color: white; /* Color del texto */
+	padding: 5px; /* Espaciado interno del texto */
+	text-align: center; /* Centra el texto horizontalmente */
+	font-size: 14px; /* Tamaño del texto */
+	height: 20%;
+	border-radius: 0px 0px 20px 20px; /* Esquinas superiores redondeadas */
+  }	
+

@@ -1,0 +1,82 @@
+/*Logotipo*/
+header nav *{
+    width: 31%;
+    height: 100%;
+    float: left;    
+	margin-left: 3px;
+    margin-right: 3px;
+	border:none;
+}
+
+header nav img{
+    user-select: none;
+    pointer-events: none;
+    border-radius: 10px 10px 10px 10px; /* Esquinas redondeadas */
+}
+
+header nav form *{
+    width: 100%;
+    background-color: var(--GrisCalido);
+    border-radius: 10px 10px 10px 10px; /* Esquinas redondeadas */
+}
+
+#bloqueo{
+    display: none;     
+    position: absolute;  
+    width: 100%;
+    height: 100%;
+    background-color:rgba(127, 127, 127, 0.3);     
+    z-index: 1;
+} 
+
+#login{
+    border: 1px solid black;
+    width: 235px;          
+    height: 430px;    
+    position: absolute;
+    background-color: var(--GrisCalido);         
+    top: 50%; /* Posiciona el div a la mitad de la altura */
+    left:50%; /* Posiciona el div a la mitad del ancho */
+    transform: translate(-50%, -50%); /* Ajusta la posición para centrarlo */
+}  
+
+#bloqueo form#login .button{ 
+    display: inline-block;
+    margin-left: 4px;
+    width: 70px;
+    height: 70px;    
+}
+
+#bloqueo form#login input#password{
+    border:none;
+    border: 1px solid black;
+    margin-bottom: 4px;
+    margin-left: 5px;   
+    margin-top: 3px; 
+    background-color: rgba(127, 127, 127, 0.3);   
+    width: 223px;    
+    height: 60px;
+    text-align: center; /* Centra el texto horizontalmente */
+    font-size: 50px;
+}
+
+#desaparece{
+    background-color: transparent;
+    border: none;
+    display: none;
+}
+
+#borrar{
+    position: relative;
+    margin-left: 4px; 
+    width: 110px;
+    height: 70px;   
+}
+
+#loguear{
+    position: relative;
+    margin-left : 3px; 
+    width: 110px;
+    height: 70px; 
+}   
+
