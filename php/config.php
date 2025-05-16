@@ -1,7 +1,8 @@
 <?php
 $servername="127.0.0.1";
 $username="loty";
-$password="guerra94"; 
+#$password="guerra94"; 
+$password="##uroPeo94"; 
 $dbname="BALTRETAIL";
 
 // Crear conexión

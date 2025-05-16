@@ -23,16 +23,30 @@ const VerdeOliva        = rootStyles.getPropertyValue('--VerdeOliva').trim();
 //    document.getElementById('bloqueo').style.display = 'none'; // Cambia el display a none
 //  }); 
 
-function addDigit(digit) {
+//function addDigit(digit) {
+//    const passwordField = document.getElementById('password');
+//    if (passwordField.value.length < 4) {
+//        passwordField.value += digit;
+//    }
+//}
+
+//function clearPassword() {
+//    document.getElementById('password').value = '';
+//}   
+
+// Esta función añade un dígito al campo de contraseña (máximo 4 caracteres)
+window.addDigit = function(digit) {
     const passwordField = document.getElementById('password');
-    if (passwordField.value.length < 4) {
+    if (passwordField && passwordField.value.length < 4) {
         passwordField.value += digit;
     }
-}
+};
 
-function clearPassword() {
-    document.getElementById('password').value = '';
-}   
-
-
+// Esta función borra el contenido del campo de contraseña
+window.clearPassword = function() {
+    const passwordField = document.getElementById('password');
+    if (passwordField) {
+        passwordField.value = '';
+    }
+};
 

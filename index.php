@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/scrollbar.css">  
   <link rel="stylesheet" href="css/Botonera.css"> 
   <link rel="stylesheet" href="css/Clientes.css"> 
-  <script src="sumain.js" defer></script> 
+  <script src="js/sumain.js" defer></script> 
   <title>LottyShop</title>    
 </head>
 <body>
