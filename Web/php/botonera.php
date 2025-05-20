@@ -60,9 +60,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-/*Recoger nuevos clientes */ 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['btnAddCliPart'])) {
-    $_SESSION["nombre"] = $_POST['nombre'];
-}
 
 ?>

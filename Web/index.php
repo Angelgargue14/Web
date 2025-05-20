@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/scrollbar.css">  
   <link rel="stylesheet" href="css/Botonera.css"> 
   <link rel="stylesheet" href="css/Clientes.css"> 
-  <script src="js/sumain.js" defer></script> 
+  <script src="sumain.js" defer></script> 
   <title>LottyShop</title>    
 </head>
 <body>
@@ -230,102 +230,40 @@ include 'php/botonera.php';
               <form id="formDatosCliente" method="POST">
                 <!-- CLIENTES PARTICULARES -->
                 <div class="clsAddCli" id="AddCliParticulares" style="display: <?php echo $MonCliParticulares ? 'flex' : 'none'; ?>;">
-                    <fieldset>
-                    <legend>Datos personales</legend>
+                  <fieldset>
+                    <legend>Datos personales / empresa</legend>
 
-                    <label for="nombre"><b>*</b> Nombre</label>
-                    <input type="text" id="nombre" name="nombre" required></br>
+                    <label for="nombre">Nombre*</label>
+                    <input type="text" id="nombre" name="nombre" required>
 
-                    <label for="apellidos"><b>*</b> Apellidos</label>
-                    <input type="text" id="apellidos" name="apellidos" required></br>
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" id="apellidos" name="apellidos">
 
-                    <label for="tipo_documento"><b>*</b> Tipo de documento</label>
+                    <label for="tipo_documento">Tipo de documento*</label>
                     <select id="tipo_documento" name="tipo_documento" required>
                       <option value="">Seleccione</option>
-                      <option value="NIF">NIF</option>
-                      <option value="NIE">NIE</option>
-                    </select></br>
-                    <input type="text" id="identidad" name="identidad" maxlength="9" required></br>
+                      <option value="NIF">NIF (Persona)</option>
+                      <option value="CIF">CIF (Empresa)</option>
+                    </select>
 
-                    <label for="fecha_nacimiento"><b>*</b> Fecha de nacimiento</label>
-                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required></br>
+                    <label for="identidad">NIF/CIF*</label>
+                    <input type="text" id="identidad" name="identidad" maxlength="9" required>
 
-                    <label for="correo"><b>*</b> Correo electrónico</label>
-                    <input type="email" id="correo" name="correo" required></br>
+                    <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
 
-                    <label for="telefono"><b>*</b> Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono" required></br>
-                  </fieldset>
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo">
 
-                  <fieldset>
-                    <legend>Dirección</legend>
-
-                    <label for="direccion"><b>*</b> Dirección fiscal</label>
-                    <input type="text" id="direccion" name="direccion" required></br>
-
-                    <label for="codigo_postal"><b>*</b> Código postal</label>
-                    <input type="text" id="codigo_postal" name="codigo_postal" required></br>
-
-                    <label for="ciudad"><b>*</b> Ciudad</label>
-                    <input type="text" id="ciudad" name="ciudad" required></br>
-
-                    <label for="provincia"><b>*</b> Provincia</label>
-                    <input type="text" id="provincia" name="provincia" required></br>
-
-                    <label for="pais"><b>*</b> País</label>
-                    <input type="text" id="pais" name="pais" required></br>
-                  </fieldset>
-                  <fieldset>
-                    <legend>Observaciones</legend>
-                    <textarea id="observaciones" name="observaciones" rows="4"></textarea>
-                    <button id="addCliente" type="submit" name="btnAddCliPart">Guardar</button>
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono">
                   </fieldset>
                 </div>
 
                 <!-- CLIENTES EMPRESAS -->
                 <div class="clsAddCli" id="AddCliEmpresas" style="display: <?php echo $MonCliEmpresas ? 'flex' : 'none'; ?>;">
-                                      <fieldset>
-                    <legend>Datos de empresa</legend>
-
-                    <label for="nombre"><b>*</b> Nombre</label>
-                    <input type="text" id="nombre" name="nombre" required></br>
-
-                    <label for="tipo_documento"><b>*</b> Tipo de documento</label>
-                    <select id="tipo_documento" name="tipo_documento" required>
-                      <option value="CIF">CIF</option>
-                    </select></br>
-                    <input type="text" id="identidad" name="identidad" maxlength="9" required></br>
-
-                    <label for="correo"><b>*</b> Correo electrónico</label>
-                    <input type="email" id="correo" name="correo" required></br>
-
-                    <label for="telefono"><b>*</b> Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono" required></br>
-                  </fieldset>
-
-                  <fieldset>
-                    <legend>Dirección</legend>
-
-                    <label for="direccion"><b>*</b> Dirección fiscal</label>
-                    <input type="text" id="direccion" name="direccion" required></br>
-
-                    <label for="codigo_postal"><b>*</b> Código postal</label>
-                    <input type="text" id="codigo_postal" name="codigo_postal" required></br>
-
-                    <label for="ciudad"><b>*</b> Ciudad</label>
-                    <input type="text" id="ciudad" name="ciudad" required></br>
-
-                    <label for="provincia"><b>*</b> Provincia</label>
-                    <input type="text" id="provincia" name="provincia" required></br>
-
-                    <label for="pais"><b>*</b> País</label>
-                    <input type="text" id="pais" name="pais" required></br>
-                  </fieldset>
-                  <fieldset>
-                    <legend>Observaciones</legend>
-                    <textarea id="observaciones" name="observaciones" rows="4"></textarea>
-                    <button id="addCliente" type="submit" name="btnAddCliEmp">Guardar</button>
-                  </fieldset>
+                  <h3>Empresa</h3>
+                  <!-- Aquí añadirías campos específicos para empresas -->
                 </div>
               </form>
 
@@ -407,8 +345,7 @@ include 'php/botonera.php';
         echo 'asignar Clientes: '.$asignarClientes.' '.'</br>';
         echo 'id empleado:'.$_SESSION['ID_EMPLEADO'].' a ver que tal</br>';
         echo 'addClientes:'.$addClientes.'</br>';
-        echo 'sesion addClientes:'.$_SESSION['addClientes'].'</br>';
-        echo 'nuevos clientes:'.$_SESSION["nombre"].'  '.$_POST['nombre'];
+        echo 'sesion addClientes:'.$_SESSION['addClientes'];
         //  echo 'CATEGORIA='.htmlspecialchars($_SESSION['categoria']).'  -  POST= '.htmlspecialchars($_POST['categoria']).'<br>';
         //  echo 'SUBCATEGORIA='.htmlspecialchars($_SESSION['subcategoria']).'  -  POST= '.htmlspecialchars($_POST['subcategoria']).'<br>';
         //  echo 'ARTICULO='.htmlspecialchars($_SESSION['articulo']).'  -  POST= '.htmlspecialchars($_POST['articulo']).'<br>';

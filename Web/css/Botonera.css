@@ -1,0 +1,64 @@
+div#botonera{
+    width: 95%;
+    margin-left: 3%;
+    margin-top: 1%;
+    float: left;
+    height: 86%;
+}
+
+div#botonera form#botonera{
+    width: 100%;
+}
+
+div#botonera form#botonera button{
+    height: 15.3%;
+    justify-content: center; /* Centrar verticalmente el contenido */
+    align-items: center; /* Centrar horizontalmente el contenido */
+    overflow: hidden;
+    border:none;
+    border-radius: 10px;
+    margin: 1px;
+}
+
+
+
+div#botonera form#botonera .cabecera{
+    width: 32%;
+    display: inline-block;
+    max-width: 32%; /* Ajusta según el ancho deseado */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+div#botonera form#botonera .cuerpo{
+    width: 23.8%;
+}
+
+div#botonera form#botonera .pie{
+    width: 48.5%;
+}
+
+div#botonera form#botonera button span{
+    font-size: large; /* Aumentar el tamaño del texto */
+    line-height: 1.2; /* Ajustar el espacio entre líneas */
+}
+
+div#botonera form#botonera button#deshacer{
+    background-color: var(--RojoPrincipal);
+}
+
+div#botonera form#botonera button:active{
+    background-color: var(--VerdeOliva);
+}
+
+div#botonera form#botonera button#deshacer:active{
+    background-color: black;
+    color: var(--RojoPrincipal);
+}
+
+div#botonera form#botonera button#pagar:active{
+    background-color: var(--OroViejo);
+}
+

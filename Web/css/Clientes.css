@@ -88,14 +88,14 @@ div#bloqueoClientes form#asignarClientes div#listaClientes{
     overflow-x: hidden; /* Oculta el desplazamiento horizontal */
 }
 
-form#asignarClientes div#cliente{
+div#cliente{
     border-bottom: 1px dashed black;
     display: flex;
     width: 100%;
     height: 8%;
 }
 
-form#asignarClientes button#cliente{
+button#cliente{
     height: 100%;
     width: 95%;
     display: flex;
@@ -155,7 +155,7 @@ button#ajustesCliente:active{
     background-color: var(--RojoPrincipal);
 }
 
-form#asignarClientes button#descartar{
+button#descartar{
     width: 90px;
     height: 6%;
     margin-left: 2%;
@@ -165,11 +165,11 @@ form#asignarClientes button#descartar{
     border-radius: 10px;
 }
 
-form#asignarClientes button#descartar:hover{
+button#descartar:hover{
     background-color: var(--GrisCalido);
 }
 
-form#asignarClientes button#descartar:active{
+button#descartar:active{
     background-color: rgba(190, 190, 190,0.8);
 }
 
@@ -215,47 +215,63 @@ div#blqAddClientes div#formAddClientes{
     border: 2px solid black; 
 }
 
-div#formAddClientes form#formbtnParEmpr{
-    width: 100%;
-    height: 9%;
+div#blqAddClientes div#formAddClientes form{
+    display: flex;
+    width: auto;
+    height: auto;
 }
 
-#particulares{
+div#blqAddClientes div#formAddClientes form#formbtnParEmpr{
+    width: auto;
+    height: auto;
+}
+
+div#blqAddClientes div#formAddClientes form#formDatosCliente{
+    width: auto;
+    height: auto;
+}
+
+div#blqAddClientes div#formAddClientes form#formDescartar{
+    width: auto;
+    height: auto;
+}
+
+div#blqAddClientes #particulares{
     float:left;
     width: 49%;
-    height: 80%;
-    margin: 1% 0 0 1%;
+    height: 5%;
+    margin: 0.5% 0 0 1%;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     border-bottom: none;
     background-color: white;
 }
 
-#particulares:hover{
+div#blqAddClientes #particulares:hover{
     background-color: var(--GrisCalido);
 }
 
-#particulares:active{
+div#blqAddClientes #particulares:active{
     background-color: var(--GrisFrio);
 }
 
 
-#empresas{
+div#blqAddClientes #empresas{
     float:right;
     width:49%;
-    height: 80%;
-    margin: 1% 1% 0 0;
+    height: 5%;
+    margin: 0.5% 1% 0 0;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     background-color: white;
     border-bottom: none;
 }
 
-#empresas:hover{
+div#blqAddClientes #empresas:hover{
     background-color: var(--GrisCalido);
 }
 
-#empresas:active{
+div#blqAddClientes #empresas:active{
     background-color: var(--GrisFrio);
 }
 
@@ -273,62 +289,4 @@ div#blqAddClientes #particulares.activo {
 
 div#blqAddClientes #empresas.activo {
   background-color: var(--OroViejo); /* o cualquier color que quieras */
-}
-
-div#formAddClientes form#formDatosCliente{
-    width: 100%;
-    height: 80%;
-}
-
-div#formAddClientes form#formDatosCliente div.clsAddCli{
-    width: 98%;
-    height: 100%;
-    overflow: hidden;
-    background-color: white;
-    margin-left: 1%;
-
-}
-div#formAddClientes form#formDatosCliente div.clsAddCli fieldset{
-    width: 33%;
-    padding-left: 1%;
-    padding-top: 1%;
-    overflow-y: scroll; /* Barra de desplazamiento solo vertical */
-    /*overflow-x: hidden; /* Oculta el desplazamiento horizontal */
-}
-
-div#formAddClientes form#formDatosCliente div.clsAddCli fieldset label{
-    display: flex;
-    width: 33%;
-}
-
-div#formAddClientes form#formDatosCliente div.clsAddCli fieldset input{
-    display: flex;
-    width: 90%;
-    height: 5%;
-}
-
-div#formAddClientes form#formDatosCliente div.clsAddCli fieldset select{
-    width: 40%;
-    height: 5%;
-}
-
-
-
-
-
-
-
-div#blqAddClientes div#formAddClientes form#formDescartar{
-    width: 90%;
-    height: 10%;
-}
-
-div#formAddClientes form#formDescartar button{
-    height: 70%;
-    width: 8%;
-    margin-left: 1%;
-    margin-top: 1%;
-    background-color: white;
-    border-radius: 10px;
-    border:none;
 }
