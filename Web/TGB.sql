@@ -23,7 +23,7 @@ INSERT INTO SUBCATEGORIAS (ID_CATEGORIA,NOMBRE,FECHA_CREACION,ORDEN) VALUES
 (MD5('DESSERTS'),'ICE CREAM',NOW(),0),
 (MD5('DESSERTS'),'CAKES',NOW(),0);
 
-INSERT INTO ARTICULOS (	NOMBRE,DESCRIPCION,PRECIO,CREACION,ACTUALIZACION,DISPONIBILIDAD) VALUES
+INSERT INTO ARTICULOS (NOMBRE,DESCRIPCION,PRECIO,CREACION,ACTUALIZACION,DISPONIBILIDAD) VALUES
 ('Cheeseburger','Carne, queso americano,  lechuga, tomate y salsa TGB',3.5,NOW(),NOW(),TRUE),
 ('TGB Burger','Carne, queso americano, bacon, lechuga, tomate y salsa TGB',4,NOW(),NOW(),TRUE),
 ('BBQ','Carne, bacon, aros de cebolla y salsa BBQ',4,NOW(),NOW(),TRUE),
@@ -200,7 +200,7 @@ INSERT INTO CLIENTES (ID_CLIENTE, NOMBRE, APELLIDOS, TIPO_DOCUMENTO, IDENTIDAD, 
 (MD5('77668899L'), 'Adriana', 'García Sánchez', 'NIF', '77668899L', '1995-11-09', 'adriana.garcia@example.com', '664223344', 'Calle Andalucía 30', '33001', 'Oviedo', 'Asturias', 'España', NULL, 'PARTICULAR', FALSE, '2024-01-14', NOW(), NULL),
 (MD5('87779900X'), 'Distribuciones del Norte S.L.', NULL, 'CIF', '87779900X', NULL, 'contacto@distribucionnorte.com', '945667788', 'Calle Cuarzo 3', '49001', 'Valladolid', 'Valladolid', 'España', 'Distribuciones del Norte S.L.', 'EMPRESA', FALSE, '2024-03-05', NOW(), NULL);
 
---INGREDIENTES DEL TGB
+/*INGREDIENTES DEL TGB*/
 
 -- Inserts para la tabla INGREDIENTES
 INSERT INTO INGREDIENTES (
@@ -514,7 +514,7 @@ INSERT INTO INGREDIENTES (
     '2b53ec412444b2c347182aacf1605868', 'Calimocho', 'Ingrediente: Calimocho', '2025-05-01 15:37:21', '2025-05-01 15:37:21',
     0.10, '10x10x2', 0.00, 'A01', 'Generado automáticamente', 100);
 
---RELACION INGREDIENTES ARTÍCULOS:
+/*RELACION INGREDIENTES ARTÍCULOS:*/
 
 -- Cheeseburger: Carne de vacuno, Queso americano, Lechuga, Tomate, Salsa TGB
 INSERT INTO INGRED_ART (ID_INGREDIENTE, ID_ARTICULO) VALUES
@@ -627,7 +627,7 @@ INSERT INTO INGRED_ART (ID_INGREDIENTE, ID_ARTICULO) VALUES
 -- Ensalada César: Lechuga Batavia, Pollo rebozado, Cebolla crujiente, Queso rallado, Bacon, Croutons, Salsa César
 INSERT INTO INGRED_ART (ID_INGREDIENTE, ID_ARTICULO) VALUES
 (MD5('Lechuga Batavia'), MD5('Ensalada César')),
-(MD5('Pollo rebozado'), MD5('Ensalada César')),
+(MD5('Pollo crujiente'), MD5('Ensalada César')),
 (MD5('Cebolla crujiente'), MD5('Ensalada César')),
 (MD5('Queso rallado'), MD5('Ensalada César')),
 (MD5('Bacon'), MD5('Ensalada César')),
@@ -637,7 +637,7 @@ INSERT INTO INGRED_ART (ID_INGREDIENTE, ID_ARTICULO) VALUES
 -- Ensalada Santa Fé: Lechuga Batavia, Pollo rebozado, Tomate, Bacon, Tortilla de trigo, Salsa de mostaza y miel
 INSERT INTO INGRED_ART (ID_INGREDIENTE, ID_ARTICULO) VALUES
 (MD5('Lechuga Batavia'), MD5('Ensalada Santa Fé')),
-(MD5('Pollo rebozado'), MD5('Ensalada Santa Fé')),
+(MD5('Pollo crujiente'), MD5('Ensalada Santa Fé')),
 (MD5('Tomate'), MD5('Ensalada Santa Fé')),
 (MD5('Bacon'), MD5('Ensalada Santa Fé')),
 (MD5('Tortilla de trigo'), MD5('Ensalada Santa Fé')),
@@ -649,7 +649,7 @@ INSERT INTO INGRED_ART (ID_INGREDIENTE, ID_ARTICULO) VALUES
 (MD5('Zanahoria'), MD5('Ensalada TGB')),
 (MD5('Maíz'), MD5('Ensalada TGB')),
 (MD5('Bacon'), MD5('Ensalada TGB')),
-(MD5('Pollo a la parrilla'), MD5('Ensalada TGB')),
+(MD5('Pollo crujiente'), MD5('Ensalada TGB')),
 (MD5('Tomate'), MD5('Ensalada TGB')),
 (MD5('Aros de cebolla'), MD5('Ensalada TGB')),
 (MD5('Salsa TGB'), MD5('Ensalada TGB'));
@@ -659,7 +659,7 @@ INSERT INTO INGRED_ART (ID_INGREDIENTE, ID_ARTICULO) VALUES
 (MD5('Mezclum de lechugas'), MD5('Ensalada de la huerta')),
 (MD5('Maíz'), MD5('Ensalada de la huerta')),
 (MD5('Zanahoria'), MD5('Ensalada de la huerta')),
-(MD5('Tomate cherry'), MD5('Ensalada de la huerta')),
+(MD5('Tomate'), MD5('Ensalada de la huerta')),
 (MD5('Cebolleta'), MD5('Ensalada de la huerta')),
 (MD5('Aceitunas'), MD5('Ensalada de la huerta')),
 (MD5('Aceite'), MD5('Ensalada de la huerta')),
@@ -684,15 +684,15 @@ INSERT INTO INGRED_ART (ID_INGREDIENTE, ID_ARTICULO) VALUES
 -- Nachos: Salsa cheddar, Chili con carne, Tomate en dados, Cebolleta, Jalapeños, Crema agria
 INSERT INTO INGRED_ART (ID_INGREDIENTE, ID_ARTICULO) VALUES
 (MD5('Salsa cheddar'), MD5('Nachos')),
-(MD5('Chili con carne'), MD5('Nachos')),
-(MD5('Tomate en dados'), MD5('Nachos')),
+(MD5('Chilli con carne'), MD5('Nachos')),
+(MD5('Tomate'), MD5('Nachos')),
 (MD5('Cebolleta'), MD5('Nachos')),
 (MD5('Jalapeños'), MD5('Nachos')),
 (MD5('Crema agria'), MD5('Nachos'));
 
 -- Epic Chicken: Pollo rebozado, Salsa de mostaza y miel
 INSERT INTO INGRED_ART (ID_INGREDIENTE, ID_ARTICULO) VALUES
-(MD5('Pollo rebozado'), MD5('Epic Chicken')),
+(MD5('Pollo crujiente'), MD5('Epic Chicken')),
 (MD5('Salsa de mostaza y miel'), MD5('Epic Chicken'));
 
 -- Alitas de pollo: Alitas de pollo, Salsa Bourbon

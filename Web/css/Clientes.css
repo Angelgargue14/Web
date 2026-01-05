@@ -284,9 +284,10 @@ div#blqAddClientes .clsAddCli{
 }
 
 div#blqAddClientes #particulares.activo {
-  background-color: var(--OroViejo); /* o cualquier color que quieras */
+  background-color: var(--OroViejo); 
 }
 
 div#blqAddClientes #empresas.activo {
-  background-color: var(--OroViejo); /* o cualquier color que quieras */
+  background-color: var(--OroViejo); 
 }
+

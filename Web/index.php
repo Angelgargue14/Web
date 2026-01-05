@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/scrollbar.css">  
   <link rel="stylesheet" href="css/Botonera.css"> 
   <link rel="stylesheet" href="css/Clientes.css"> 
-  <script src="sumain.js" defer></script> 
+  <script src="js/sumain.js" defer></script> 
   <title>LottyShop</title>    
 </head>
 <body>
@@ -185,22 +185,23 @@ include 'php/botonera.php';
 
                       $buscaClientes=mysqli_query($conn, $q_buscaClientes);
 
-                      if($buscaClientes->num_rows > 0) {
-                        while ($buscaCliente = $buscaClientes->fetch_assoc()) {
-                      echo  '<div id="cliente">'
-                          .'<button type="submit" name="cliente" id="cliente" value='.htmlspecialchars($buscaCliente["IDENTIDAD"]).'>'
-                          .'<div id="nombreCliente">'.htmlspecialchars($buscaCliente["NOMBRE"]).' '.htmlspecialchars($buscaCliente["APELLIDOS"]).'</div>'
-                          .'<div id="direccionCliente"><span class="typcn typcn-home"></span> '.htmlspecialchars($buscaCliente["DIRECCION"])
-                          .' '.htmlspecialchars($buscaCliente["CODIGO_POSTAL"])
-                          .' '.htmlspecialchars($buscaCliente["CIUDAD"])
-                          .' ('.htmlspecialchars($buscaCliente["PROVINCIA"]).')'
-                          .'</div>'
-                          .'<div id="datosCliente"><span class="typcn typcn-at"></span> '.htmlspecialchars($buscaCliente["CORREO"]).'</br>'
-                          .'<span class="typcn typcn-device-phone"></span> '.htmlspecialchars($buscaCliente["TELEFONO"]).'</div>'
-                          .' </button>'
-                          .'<button id="ajustesCliente" value='.htmlspecialchars($buscaCliente["IDENTIDAD"]).' name="btnAddCliente"><span class="typcn typcn-edit"></span></button>'
-                          .'</div>';
-                        }
+                      if ($buscaClientes->num_rows > 0) {
+                          while ($buscaCliente = $buscaClientes->fetch_assoc()) {
+                              // Usamos safe_html() para evitar el error de "Passing null to parameter #1"
+                              echo '<div id="cliente">'
+                                  . '<button type="submit" name="cliente" id="cliente" value="' . safe_html($buscaCliente["IDENTIDAD"]) . '">'
+                                  . '<div id="nombreCliente">' . safe_html($buscaCliente["NOMBRE"]) . ' ' . safe_html($buscaCliente["APELLIDOS"]) . '</div>'
+                                  . '<div id="direccionCliente"><span class="typcn typcn-home"></span> ' . safe_html($buscaCliente["DIRECCION"])
+                                  . ' ' . safe_html($buscaCliente["CODIGO_POSTAL"])
+                                  . ' ' . safe_html($buscaCliente["CIUDAD"])
+                                  . ' (' . safe_html($buscaCliente["PROVINCIA"]) . ')'
+                                  . '</div>'
+                                  . '<div id="datosCliente"><span class="typcn typcn-at"></span> ' . safe_html($buscaCliente["CORREO"]) . '</br>'
+                                  . '<span class="typcn typcn-device-phone"></span> ' . safe_html($buscaCliente["TELEFONO"]) . '</div>'
+                                  . ' </button>'
+                                  . '<button id="ajustesCliente" value="' . safe_html($buscaCliente["IDENTIDAD"]) . '" name="btnAddCliente"><span class="typcn typcn-edit"></span></button>'
+                                  . '</div>';
+                          }
                       }
                     ?>
                   </div>
@@ -257,13 +258,45 @@ include 'php/botonera.php';
 
                     <label for="telefono">Teléfono</label>
                     <input type="tel" id="telefono" name="telefono">
+                    <button type="submit" name="btnGuardarParticular">
+                          Guardar Particular
+                    </button>
                   </fieldset>
                 </div>
 
                 <!-- CLIENTES EMPRESAS -->
                 <div class="clsAddCli" id="AddCliEmpresas" style="display: <?php echo $MonCliEmpresas ? 'flex' : 'none'; ?>;">
                   <h3>Empresa</h3>
-                  <!-- Aquí añadirías campos específicos para empresas -->
+                  <fieldset>
+                      <legend>Datos Fiscales Empresa</legend>
+                  
+                      <label for="razon_social">Razón Social*</label>
+                      <input type="text" id="razon_social" name="razon_social" placeholder="Nombre de la empresa" required>
+                  
+                      <label for="identidad_empresa">CIF*</label>
+                      <input type="text" id="identidad_empresa" name="identidad_empresa" maxlength="9" placeholder="B00000000" required>
+                  
+                      <label for="direccion">Dirección Fiscal*</label>
+                      <input type="text" id="direccion" name="direccion" placeholder="Calle, número..." required>
+                  
+                      <div id="grupo-localidad">
+                          <label for="codigo_postal">C. Postal</label>
+                          <input type="text" id="codigo_postal" name="codigo_postal">
+                          
+                          <label for="ciudad">Ciudad</label>
+                          <input type="text" id="ciudad" name="ciudad">
+                      </div>
+                  
+                      <label for="correo_empresa">Correo facturación</label>
+                      <input type="email" id="correo_empresa" name="correo_empresa">
+                  
+                      <label for="telefono_empresa">Teléfono</label>
+                      <input type="tel" id="telefono_empresa" name="telefono_empresa">
+                  
+                      <button type="submit" name="btnGuardarEmpresa">
+                          Guardar Empresa
+                      </button>
+                  </fieldset>
                 </div>
               </form>
 

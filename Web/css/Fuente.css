@@ -1,10 +1,12 @@
 @font-face {
     /* Nombre con el que usaremos esta fuente en nuestro CSS */
     font-family: 'ChakraPetch';
+    font-weight: normal;
+    font-style: normal;
   
     /* Ruta al archivo de la fuente .ttf, desde la raíz del sitio */
     /* También especificamos el formato del archivo (TrueType en este caso) */
-    src: url('fuentes/ChakraPetch-Regular.ttf') format('truetype');
+    src: url('../fuentes/ChakraPetch-Regular.ttf') format('truetype');
   
     /* Peso de la fuente. "normal" equivale a 400 */
     font-weight: normal;
@@ -13,6 +15,6 @@
     font-style: normal;
   }
 
-  body {
-    font-family: 'ChakraPetch';
-  }
+body, button, input, select, b, span {
+    font-family: 'ChakraPetch', sans-serif;
+}
