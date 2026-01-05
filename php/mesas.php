@@ -1,6 +1,6 @@
 <?php
 // Consultar las distintas ubicaciones
-$q_ubicaciones = "SELECT DISTINCT UBICACION FROM $dbname.MESAS ORDER BY MESA ASC";
+$q_ubicaciones = "SELECT DISTINCT UBICACION FROM $dbname.MESAS ORDER BY UBICACION ASC";
 $ubicaciones= mysqli_query($conn, $q_ubicaciones);
 if (!$ubicaciones) {
     die("Error en la consulta: ". mysqli_error($conn));
